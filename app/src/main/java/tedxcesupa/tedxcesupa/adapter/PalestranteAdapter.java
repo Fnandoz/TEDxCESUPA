@@ -1,4 +1,4 @@
-package tedxcesupa.tedxcesupa;
+package tedxcesupa.tedxcesupa.adapter;
 
 import android.app.Activity;
 import android.view.View;
@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import tedxcesupa.tedxcesupa.model.Palestrante;
+import tedxcesupa.tedxcesupa.R;
 
 /**
  * Created by fernando on 19/11/2017.

@@ -1,4 +1,4 @@
-package tedxcesupa.tedxcesupa.Fragments;
+package tedxcesupa.tedxcesupa.fragments;
 
 
 import android.os.Bundle;

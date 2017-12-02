@@ -1,4 +1,4 @@
-package tedxcesupa.tedxcesupa.Fragments;
+package tedxcesupa.tedxcesupa.fragments;
 
 
 import android.app.AlertDialog;
@@ -14,13 +14,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import tedxcesupa.tedxcesupa.Palestrante;
-import tedxcesupa.tedxcesupa.PalestranteAdapter;
+import tedxcesupa.tedxcesupa.model.Palestrante;
+import tedxcesupa.tedxcesupa.adapter.PalestranteAdapter;
 import tedxcesupa.tedxcesupa.R;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;

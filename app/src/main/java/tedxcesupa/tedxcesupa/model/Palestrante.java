@@ -1,4 +1,4 @@
-package tedxcesupa.tedxcesupa;
+package tedxcesupa.tedxcesupa.model;
 
 /**
  * Created by fernando on 19/11/2017.
