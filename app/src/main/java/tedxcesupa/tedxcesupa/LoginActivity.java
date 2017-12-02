@@ -25,7 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null){
-            // Vai para a proxima tela
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -66,12 +67,13 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-
                                 mUser = mAuth.getCurrentUser();
                                 if (mUser.isEmailVerified()){
-                                    // Px tela
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
                                 }else {
                                     Toast.makeText(LoginActivity.this, "Verifique sua conta", Toast.LENGTH_SHORT).show();
+                                    mUser.sendEmailVerification();
                                 }
                             }else {
                                 Toast.makeText(LoginActivity.this, "Email ou senha inválido.", Toast.LENGTH_SHORT).show();

@@ -20,5 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_menu"/>
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+        app:menu="@menu/bottom_menu" />
 </RelativeLayout>

@@ -1,12 +1,20 @@
 package tedxcesupa.tedxcesupa;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import tedxcesupa.tedxcesupa.Fragments.AnotacoesFragment;
 import tedxcesupa.tedxcesupa.Fragments.InformacoesFragment;
@@ -17,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
+    FirebaseUser mUser;
+    FirebaseAuth mAuth;
+
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -24,9 +35,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
 
         bottomNavigationView = findViewById(R.id.bottom_menu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
