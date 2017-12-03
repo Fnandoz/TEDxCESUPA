@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +26,7 @@ import tedxcesupa.tedxcesupa.R;
 public class AnotacoesFragment extends Fragment {
 
     EditText anotacao;
+    ProgressBar progressBar;
 
     FirebaseDatabase mDatabase;
     DatabaseReference mReference;
@@ -55,11 +57,13 @@ public class AnotacoesFragment extends Fragment {
         mReference = mDatabase.getReference("usuarios").child(mUser.getUid()).child("anotacao");
 
         anotacao = view.findViewById(R.id.anotacaoEditText);
+        progressBar = view.findViewById(R.id.AnotacaoprogressBar);
 
         mReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 anotacao.setText(dataSnapshot.getValue().toString());
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
