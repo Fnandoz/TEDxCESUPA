@@ -1,5 +1,6 @@
 package tedxcesupa.tedxcesupa;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseUser mUser;
     FirebaseAuth mAuth;
+    LoginManager loginManager;
 
     @Override
     protected void onRestart() {
@@ -39,12 +42,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_sair:
+                FirebaseAuth.getInstance().signOut();
+                loginManager.logOut();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+        loginManager = LoginManager.getInstance();
 
         bottomNavigationView = findViewById(R.id.bottom_menu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -82,4 +98,5 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
         bottomNavigationView.setSelectedItemId(R.id.menu_item1);
     }
+
 }

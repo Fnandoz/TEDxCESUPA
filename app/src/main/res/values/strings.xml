@@ -2,4 +2,8 @@
 <resources>
 
     <string name="app_name">TEDxCESUPA</string>
+
+    <string name="facebook_app_id">1645809122125292</string>
+    <string name="fb_login_protocol_scheme">fb1645809122125292</string>
+
 </resources>
