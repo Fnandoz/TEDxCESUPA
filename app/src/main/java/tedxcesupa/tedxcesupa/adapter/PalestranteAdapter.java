@@ -20,7 +20,7 @@ import tedxcesupa.tedxcesupa.R;
  */
 
 public class PalestranteAdapter extends BaseAdapter {
-    private final List<Palestrante> palestrantes;
+    private List<Palestrante> palestrantes;
     Activity activity;
 
     public PalestranteAdapter(List<Palestrante> palestrantes, Activity activity) {
