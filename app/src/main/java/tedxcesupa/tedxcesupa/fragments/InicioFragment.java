@@ -7,6 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.pierfrancescosoffritti.youtubeplayer.player.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayer;
+import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerInitListener;
+import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView;
+
 import tedxcesupa.tedxcesupa.R;
 
 
@@ -29,8 +34,38 @@ public class InicioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio, container, false);
+        View view = inflater.inflate(R.layout.fragment_inicio, container, false);
+
+        YouTubePlayerView player1 = view.findViewById(R.id.youtube_player_view1);
+        YouTubePlayerView player2 = view.findViewById(R.id.youtube_player_view2);
+
+        player1.initialize(new YouTubePlayerInitListener() {
+            @Override
+            public void onInitSuccess(final YouTubePlayer initializedYouTubePlayer) {
+                initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
+                    @Override
+                    public void onReady() {
+                        String videoId = "d0NHOpeczUU";
+                        initializedYouTubePlayer.loadVideo(videoId, 0);
+                    }
+                });
+            }
+        }, true);
+
+        player2.initialize(new YouTubePlayerInitListener() {
+            @Override
+            public void onInitSuccess(final YouTubePlayer initializedYouTubePlayer) {
+                initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
+                    @Override
+                    public void onReady() {
+                        String videoId = "VhP_Z5XpvE8";
+                        initializedYouTubePlayer.loadVideo(videoId, 0);
+
+                    }
+                });
+            }
+        }, true);
+        return view;
     }
 
 }

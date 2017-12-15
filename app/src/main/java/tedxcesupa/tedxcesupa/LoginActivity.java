@@ -2,12 +2,14 @@ package tedxcesupa.tedxcesupa;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -64,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 handleFacebookAccessToken(loginResult.getAccessToken());
-
             }
 
             @Override
@@ -77,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d(TAG, "facebook:onError", error);
             }
         });
+
     }
 
     @Override
@@ -86,7 +88,6 @@ public class LoginActivity extends AppCompatActivity {
         // Pass the activity result back to the Facebook SDK
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
-
 
     public void buttonClick(View v){
         switch (v.getId()){
@@ -124,7 +125,8 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
                     });
-
+        }else {
+            Toast.makeText(this, "Dados inválidos", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -136,14 +138,16 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
                                 mUser = mAuth.getCurrentUser();
-
                                 assert mUser != null;
                                 mUser.sendEmailVerification()
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()){
-                                                    // OK
+                                                    Toast.makeText(LoginActivity.this,
+                                                            "Confirme sua conta através do link" +
+                                                                    " enviado por e-mail.",
+                                                            Toast.LENGTH_LONG).show();
                                                 }else {
                                                     // Erro
                                                 }
@@ -159,17 +163,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void recuperar_Senha(String email){
-        mAuth.sendPasswordResetEmail(email)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this, "Enviado", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(LoginActivity.this, "Erro!", Toast.LENGTH_SHORT).show();
+        if (email.isEmpty()){
+            Toast.makeText(this, "Informe seu e-mail!", Toast.LENGTH_SHORT).show();
+        }else {
+            mAuth.sendPasswordResetEmail(email)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(LoginActivity.this, "Enviado", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Erro, e-mail não encontrado.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 
     private void handleFacebookAccessToken(AccessToken token) {
@@ -200,7 +208,9 @@ public class LoginActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.criar_conta_dialog, null);
         builder.setView(view);
+
         final AlertDialog alert = builder.create();
+        alert.show();
 
         final EditText email = alert.findViewById(R.id.nc_email_edit);
         final EditText senha1 = alert.findViewById(R.id.nc_senha1_edit);
@@ -217,12 +227,12 @@ public class LoginActivity extends AppCompatActivity {
                     cadastro(e, s);
                     alert.dismiss();
                 }else {
-                    // Informa erro
+                    Toast.makeText(LoginActivity.this, "Dados incorretos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        alert.show();
+
 
     }
 

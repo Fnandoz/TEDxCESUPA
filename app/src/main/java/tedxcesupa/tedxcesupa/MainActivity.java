@@ -35,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        bottomNavigationView.setSelectedItemId(R.id.menu_item1);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.option_menu, menu);
@@ -49,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
                 loginManager.logOut();
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
+                break;
+
+            case R.id.menu_comprar:
+                break;
+
+            case R.id.menu_alterar_senha:
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

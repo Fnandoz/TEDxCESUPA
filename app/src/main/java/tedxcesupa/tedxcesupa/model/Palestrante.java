@@ -1,32 +1,48 @@
 package tedxcesupa.tedxcesupa.model;
 
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by fernando on 19/11/2017.
  */
 
 public class Palestrante {
-    int foto;
+    String foto;
     String nome;
     String descricao;
     int estrelas;
 
-    public Palestrante(int foto, String nome) {
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("palestrantes");
+
+    public Palestrante(String foto, String nome) {
         this.foto = foto;
         this.nome = nome;
     }
 
-    public Palestrante(int foto, String nome, String descricao, int estrelas) {
+    public Palestrante(String foto, String nome, String descricao, int estrelas) {
         this.foto = foto;
         this.nome = nome;
         this.descricao = descricao;
         this.estrelas = estrelas;
     }
 
-    public int getFoto() {
+    public Palestrante(){}
+
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(int foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
@@ -53,4 +69,36 @@ public class Palestrante {
     public void setEstrelas(int estrelas) {
         this.estrelas = estrelas;
     }
+
+    public ArrayList<Palestrante> getPalestrantes(){
+        final ArrayList<Palestrante> palestranteArrayList = new ArrayList<>();
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                ArrayList<HashMap<String, String>> dados = (ArrayList<HashMap<String, String>>)dataSnapshot.getValue();
+                dados.remove(0);
+                for (HashMap<String, String> palestrante : dados){
+                    Log.d("TAG", "onDataChange: "+palestrante);
+                        String foto = palestrante.get("imagem");
+                        String nome = palestrante.get("nome");
+                        String descricao = palestrante.get("palestrante");
+                        int avaliacao = 5;//Integer.parseInt(palestrante.get("avaliacao"));
+
+                        Palestrante p = new Palestrante(foto, nome, descricao, avaliacao);
+                        palestranteArrayList.add(p);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        return palestranteArrayList;
+    }
+
+
 }

@@ -1,6 +1,9 @@
 package tedxcesupa.tedxcesupa.adapter;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -48,8 +51,9 @@ public class PalestranteAdapter extends BaseAdapter {
         Palestrante palestrante = palestrantes.get(i);
         ImageView fotoPerfil = view.findViewById(R.id.palestranteImageView);
         TextView nome = view.findViewById(R.id.palestranteTextView);
-
-        fotoPerfil.setImageDrawable(activity.getResources().getDrawable(R.mipmap.ic_launcher));
+        byte[] decodedString = Base64.decode(palestrante.getFoto(), Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        fotoPerfil.setImageBitmap(Bitmap.createScaledBitmap(decodedByte, 160, 160, false));
         nome.setText(palestrante.getNome());
 
         return view;
