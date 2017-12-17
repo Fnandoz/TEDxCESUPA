@@ -3,11 +3,13 @@ package tedxcesupa.tedxcesupa.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import tedxcesupa.tedxcesupa.MainActivity;
 import tedxcesupa.tedxcesupa.R;
 
 
@@ -33,6 +36,9 @@ public class AnotacoesFragment extends Fragment {
     FirebaseAuth mAuth;
     FirebaseUser mUser;
 
+    String textoOriginal = "";
+    boolean status_edicao = false;
+
     public AnotacoesFragment() {
         // Required empty public constructor
     }
@@ -42,7 +48,6 @@ public class AnotacoesFragment extends Fragment {
         return fragment;
     }
 
-    String TAG = "OK";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,10 +56,9 @@ public class AnotacoesFragment extends Fragment {
 
         mDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
-
         mUser = mAuth.getCurrentUser();
-
         mReference = mDatabase.getReference("usuarios").child(mUser.getUid()).child("anotacao");
+
 
         anotacao = view.findViewById(R.id.anotacaoEditText);
         progressBar = view.findViewById(R.id.AnotacaoprogressBar);
@@ -63,7 +67,9 @@ public class AnotacoesFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 anotacao.setText(dataSnapshot.getValue().toString());
+                textoOriginal = dataSnapshot.getValue().toString();
                 progressBar.setVisibility(View.GONE);
+                status_edicao = true;
             }
 
             @Override
@@ -82,6 +88,7 @@ public class AnotacoesFragment extends Fragment {
     }
 
     public void updateAnotation(){
-        mReference.setValue(anotacao.getText().toString());
+        if (status_edicao)
+            mReference.setValue(anotacao.getText().toString());
     }
 }

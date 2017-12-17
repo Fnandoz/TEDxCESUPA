@@ -16,8 +16,10 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,6 +52,8 @@ public class PalestrantesFragment extends Fragment {
     ArrayList<Palestrante> palestranteArrayList;
     PalestranteAdapter adapter;
 
+    ProgressBar progressBar;
+
     public PalestrantesFragment() {
         // Required empty public constructor
     }
@@ -64,6 +68,8 @@ public class PalestrantesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_palestrantes, container, false);
+
+        progressBar = view.findViewById(R.id.palestrantes_progress);
 
         palestranteArrayList = new ArrayList<>();
         getPalestrantes();
@@ -94,13 +100,14 @@ public class PalestrantesFragment extends Fragment {
                     Log.d("TAG", "onDataChange: "+palestrante);
                     String foto = palestrante.get("imagem");
                     String nome = palestrante.get("nome");
-                    String descricao = palestrante.get("palestrante");
+                    String descricao = palestrante.get("descricao");
                     int avaliacao = 5;//Integer.parseInt(palestrante.get("avaliacao"));
 
                     Palestrante p = new Palestrante(foto, nome, descricao, avaliacao);
                     palestranteArrayList.add(p);
                 }
                 adapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
 

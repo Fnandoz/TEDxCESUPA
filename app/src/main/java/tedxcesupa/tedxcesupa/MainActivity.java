@@ -112,5 +112,4 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
         bottomNavigationView.setSelectedItemId(R.id.menu_item1);
     }
-
 }

@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "61984280655",
-    "firebase_url": "https://tedxcesupa-189103.firebaseio.com",
-    "project_id": "tedxcesupa-189103",
-    "storage_bucket": "tedxcesupa-189103.appspot.com"
+    "project_number": "830436146471",
+    "firebase_url": "https://tedxcesupa-64ecf.firebaseio.com",
+    "project_id": "tedxcesupa-64ecf",
+    "storage_bucket": "tedxcesupa-64ecf.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:61984280655:android:4f20c64a29f48f7f",
+        "mobilesdk_app_id": "1:830436146471:android:4f20c64a29f48f7f",
         "android_client_info": {
           "package_name": "tedxcesupa.tedxcesupa"
         }
       },
       "oauth_client": [
         {
-          "client_id": "61984280655-p592nflklbn12ok4lf2s5u05q7865212.apps.googleusercontent.com",
+          "client_id": "830436146471-d6sd2bjvnl1neeha1l5t0j2m94uue3a6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tedxcesupa.tedxcesupa",
+            "certificate_hash": "3fc890ace0f907fc29b130d082f5febbfb483dc4"
+          }
+        },
+        {
+          "client_id": "830436146471-hj2mjs2jir9g5ab9sr18miqptrt2s67m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDkcIcgvuuomLlVEM9y9sFn5_G19ukiLfs"
+          "current_key": "AIzaSyAtjAmIJSO_3H0qu0yedI0eCaLzKZ5pqPU"
         }
       ],
       "services": {
@@ -29,8 +37,20 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830436146471-hj2mjs2jir9g5ab9sr18miqptrt2s67m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "830436146471-ksjf201oga7k96a6t7bl87b4b99h1p60.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.GETACESUPA.TEDxCESUPA"
+              }
+            }
+          ]
         },
         "ads_service": {
           "status": 2
