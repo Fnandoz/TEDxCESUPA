@@ -1,8 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2017. TEDxCESUPA
+  ~ Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
+  ~ dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
+  ~ Desenvolvido por:
+  ~   Luis Fernando Gomes Sales - lfgsnando@gmail.com
+  ~   Matheus Henrique dos Santos - mhenrique.as@gmail.com
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo_cesupa"

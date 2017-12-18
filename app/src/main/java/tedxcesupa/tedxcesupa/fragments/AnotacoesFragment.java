@@ -1,15 +1,23 @@
+/*
+ * Copyright (c) 2017. TEDxCESUPA
+ * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
+ * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
+ * Desenvolvido por:
+ *   Luis Fernando Gomes Sales - lfgsnando@gmail.com
+ *   Matheus Henrique dos Santos - mhenrique.as@gmail.com
+ *
+ */
+
 package tedxcesupa.tedxcesupa.fragments;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,7 +27,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import tedxcesupa.tedxcesupa.MainActivity;
 import tedxcesupa.tedxcesupa.R;
 
 

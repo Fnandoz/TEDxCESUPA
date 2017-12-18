@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2017. TEDxCESUPA
+ * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
+ * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
+ * Desenvolvido por:
+ *   Luis Fernando Gomes Sales - lfgsnando@gmail.com
+ *   Matheus Henrique dos Santos - mhenrique.as@gmail.com
+ *
+ */
+
 package tedxcesupa.tedxcesupa.adapter;
 
 import android.app.Activity;
@@ -8,10 +18,8 @@ import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import tedxcesupa.tedxcesupa.R;

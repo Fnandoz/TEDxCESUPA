@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2017. TEDxCESUPA
+ * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
+ * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
+ * Desenvolvido por:
+ *   Luis Fernando Gomes Sales - lfgsnando@gmail.com
+ *   Matheus Henrique dos Santos - mhenrique.as@gmail.com
+ *
+ */
+
 package tedxcesupa.tedxcesupa.adapter;
 
 import android.app.Activity;
@@ -12,16 +22,16 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import tedxcesupa.tedxcesupa.model.Palestrante;
 import tedxcesupa.tedxcesupa.R;
+import tedxcesupa.tedxcesupa.model.Palestrante;
 
 /**
  * Created by fernando on 19/11/2017.
  */
 
 public class PalestranteAdapter extends BaseAdapter {
-    private List<Palestrante> palestrantes;
     Activity activity;
+    private List<Palestrante> palestrantes;
 
     public PalestranteAdapter(List<Palestrante> palestrantes, Activity activity) {
         this.palestrantes = palestrantes;

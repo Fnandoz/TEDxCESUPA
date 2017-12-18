@@ -1,7 +1,16 @@
+/*
+ * Copyright (c) 2017. TEDxCESUPA
+ * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
+ * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
+ * Desenvolvido por:
+ *   Luis Fernando Gomes Sales - lfgsnando@gmail.com
+ *   Matheus Henrique dos Santos - mhenrique.as@gmail.com
+ *
+ */
+
 package tedxcesupa.tedxcesupa.fragments;
 
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,13 +25,10 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -38,10 +44,7 @@ import java.util.List;
 
 import tedxcesupa.tedxcesupa.R;
 import tedxcesupa.tedxcesupa.adapter.PatrocinadoresAdapter;
-import tedxcesupa.tedxcesupa.model.Palestrante;
 import tedxcesupa.tedxcesupa.model.Patrocinador;
-
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 
 public class InformacoesFragment extends Fragment {

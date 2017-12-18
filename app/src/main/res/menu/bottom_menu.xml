@@ -1,6 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2017. TEDxCESUPA
+  ~ Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
+  ~ dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
+  ~ Desenvolvido por:
+  ~   Luis Fernando Gomes Sales - lfgsnando@gmail.com
+  ~   Matheus Henrique dos Santos - mhenrique.as@gmail.com
+  ~
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/menu_item1"

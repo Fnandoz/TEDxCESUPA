@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2017. TEDxCESUPA
+ * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
+ * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
+ * Desenvolvido por:
+ *   Luis Fernando Gomes Sales - lfgsnando@gmail.com
+ *   Matheus Henrique dos Santos - mhenrique.as@gmail.com
+ *
+ */
+
 package tedxcesupa.tedxcesupa.fragments;
 
 
@@ -10,7 +20,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,11 +46,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-import tedxcesupa.tedxcesupa.model.Palestrante;
-import tedxcesupa.tedxcesupa.adapter.PalestranteAdapter;
 import tedxcesupa.tedxcesupa.R;
+import tedxcesupa.tedxcesupa.adapter.PalestranteAdapter;
+import tedxcesupa.tedxcesupa.model.Palestrante;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -225,7 +233,6 @@ public class PalestrantesFragment extends Fragment {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Avalie "+palestrante.getNome());
         builder.setView(view);
-
 
 
         RatingBar ratingBar = view.findViewById(R.id.palestrante_dialog_ratingBar);

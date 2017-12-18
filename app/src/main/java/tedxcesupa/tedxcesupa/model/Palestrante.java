@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2017. TEDxCESUPA
+ * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
+ * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
+ * Desenvolvido por:
+ *   Luis Fernando Gomes Sales - lfgsnando@gmail.com
+ *   Matheus Henrique dos Santos - mhenrique.as@gmail.com
+ *
+ */
+
 package tedxcesupa.tedxcesupa.model;
 
 import android.util.Log;
@@ -81,13 +91,13 @@ public class Palestrante {
                 dados.remove(0);
                 for (HashMap<String, String> palestrante : dados){
                     Log.d("TAG", "onDataChange: "+palestrante);
-                        String foto = palestrante.get("imagem");
-                        String nome = palestrante.get("nome");
-                        String descricao = palestrante.get("palestrante");
-                        int avaliacao = 5;//Integer.parseInt(palestrante.get("avaliacao"));
+                    String foto = palestrante.get("imagem");
+                    String nome = palestrante.get("nome");
+                    String descricao = palestrante.get("palestrante");
+                    int avaliacao = 5;//Integer.parseInt(palestrante.get("avaliacao"));
 
-                        Palestrante p = new Palestrante(foto, nome, descricao, avaliacao);
-                        palestranteArrayList.add(p);
+                    Palestrante p = new Palestrante(foto, nome, descricao, avaliacao);
+                    palestranteArrayList.add(p);
                 }
             }
 

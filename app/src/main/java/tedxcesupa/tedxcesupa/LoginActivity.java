@@ -1,15 +1,22 @@
+/*
+ * Copyright (c) 2017. TEDxCESUPA
+ * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
+ * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
+ * Desenvolvido por:
+ *   Luis Fernando Gomes Sales - lfgsnando@gmail.com
+ *   Matheus Henrique dos Santos - mhenrique.as@gmail.com
+ *
+ */
+
 package tedxcesupa.tedxcesupa;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -30,14 +37,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
-    private FirebaseUser mUser;
     CallbackManager mCallbackManager;
     EditText emailText, senhaText;
     LoginButton loginButton;
     ProgressBar loginProgress;
-
     String TAG = "FACEBOOK";
+    private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
 
     @Override
     public void onStart() {
@@ -238,7 +244,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
 
 
     }

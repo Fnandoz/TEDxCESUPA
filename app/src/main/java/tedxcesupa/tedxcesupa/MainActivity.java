@@ -1,16 +1,24 @@
+/*
+ * Copyright (c) 2017. TEDxCESUPA
+ * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
+ * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
+ * Desenvolvido por:
+ *   Luis Fernando Gomes Sales - lfgsnando@gmail.com
+ *   Matheus Henrique dos Santos - mhenrique.as@gmail.com
+ *
+ */
+
 package tedxcesupa.tedxcesupa;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -156,9 +164,9 @@ public class MainActivity extends AppCompatActivity {
         builder.setView(view);
 
         final EditText senha1 = view.findViewById(R.id.ns_senha1),
-                 senha2 = view.findViewById(R.id.ns_senha2),
-                 email  = view.findViewById(R.id.ns_email),
-                 senha_atual = view.findViewById(R.id.ns_senha_atual);
+                senha2 = view.findViewById(R.id.ns_senha2),
+                email  = view.findViewById(R.id.ns_email),
+                senha_atual = view.findViewById(R.id.ns_senha_atual);
 
         mProgress = view.findViewById(R.id.ns_progress);
         Button salvar = view.findViewById(R.id.ns_salvar);
