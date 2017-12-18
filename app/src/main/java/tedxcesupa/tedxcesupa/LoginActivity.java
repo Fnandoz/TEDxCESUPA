@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     CallbackManager mCallbackManager;
     EditText emailText, senhaText;
     LoginButton loginButton;
+    ProgressBar loginProgress;
 
     String TAG = "FACEBOOK";
 
@@ -60,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         emailText = findViewById(R.id.emailLoginEdit);
         senhaText = findViewById(R.id.senhaLoginEdit);
         loginButton = findViewById(R.id.facebookLogin);
+        loginProgress = findViewById(R.id.loginProgress);
 
         loginButton.setReadPermissions("email", "public_profile");
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
@@ -93,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
         switch (v.getId()){
             case R.id.loginButton:
                 login(emailText.getText().toString(), senhaText.getText().toString());
+                loginProgress.setVisibility(View.VISIBLE);
                 break;
 
             case R.id.cadastrarButton:
@@ -119,14 +123,17 @@ public class LoginActivity extends AppCompatActivity {
                                 }else {
                                     Toast.makeText(LoginActivity.this, "Verifique sua conta", Toast.LENGTH_SHORT).show();
                                     mUser.sendEmailVerification();
+                                    loginProgress.setVisibility(View.GONE);
                                 }
                             }else {
                                 Toast.makeText(LoginActivity.this, "Email ou senha inválido.", Toast.LENGTH_SHORT).show();
+                                loginProgress.setVisibility(View.GONE);
                             }
                         }
                     });
         }else {
             Toast.makeText(this, "Dados inválidos", Toast.LENGTH_SHORT).show();
+            loginProgress.setVisibility(View.GONE);
         }
     }
 

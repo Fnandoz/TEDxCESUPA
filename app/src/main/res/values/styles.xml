@@ -3,5 +3,7 @@
 
     <style name="TEDxCESUPA" parent="Theme.AppCompat.Light.DarkActionBar" >
         <item name="colorAccent">@color/vermelho_tedx</item>
+        <item name="colorPrimary">@color/preto</item>
+        <item name="android:textColorPrimary">@color/preto</item>
     </style>
 </resources>
