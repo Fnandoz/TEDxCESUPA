@@ -83,7 +83,7 @@ public class InformacoesFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getContext(), patrocinadorList.get(i).getUrl(), Toast.LENGTH_SHORT).show();
+                abrirUrl(patrocinadorList.get(i).getUrl());
             }
         });
 
@@ -131,8 +131,7 @@ public class InformacoesFragment extends Fragment {
                     Log.d("TAG", "onDataChange: " + patrocinadores);
                     String titulo = patrocinadores.get("titulo");
                     String foto = patrocinadores.get("imagem");
-                    String url = patrocinadores.get("nome");
-
+                    String url = patrocinadores.get("url");
 
                     Patrocinador p = new Patrocinador(titulo, url, foto);
                     patrocinadorList.add(p);
