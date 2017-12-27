@@ -207,10 +207,11 @@ public class PalestrantesFragment extends Fragment {
         soma_avaliacao = 0;
         media_avaliacao = 0;
         DatabaseReference AvaliacaoRef = database.getReference("avaliacoes").child(palestrante);
+
         AvaliacaoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChild(palestrante)) {
+                if (dataSnapshot.exists()) {
                     avaliacoes_palestrante_map = (HashMap<String, Float>) dataSnapshot.getValue();
                     for (Object i : avaliacoes_palestrante_map.values()) {
                         soma_avaliacao += Float.parseFloat(i.toString());
