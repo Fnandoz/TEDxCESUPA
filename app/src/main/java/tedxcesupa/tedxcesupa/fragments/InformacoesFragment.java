@@ -16,7 +16,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,11 +126,9 @@ public class InformacoesFragment extends Fragment {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 ArrayList<HashMap<String, String>> dados = (ArrayList<HashMap<String, String>>) dataSnapshot.getValue();
                 dados.remove(0);
                 for (HashMap<String, String> patrocinadores : dados) {
-                    Log.d("TAG", "onDataChange: " + patrocinadores);
                     String titulo = patrocinadores.get("titulo");
                     String foto = patrocinadores.get("imagem");
                     String url = patrocinadores.get("url");

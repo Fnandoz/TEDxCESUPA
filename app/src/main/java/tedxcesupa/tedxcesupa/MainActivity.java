@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         comprarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "http://www.example.com";
+                String url = "https://tedxcesupaconsolidar.eventbrite.com.br";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);

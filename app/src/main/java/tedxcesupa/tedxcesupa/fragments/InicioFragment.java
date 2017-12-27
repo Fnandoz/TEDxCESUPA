@@ -68,7 +68,7 @@ public class InicioFragment extends Fragment {
                 initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
                     @Override
                     public void onReady() {
-                        String videoId = "VhP_Z5XpvE8";
+                        String videoId = "BoSff54NCHo";
                         initializedYouTubePlayer.loadVideo(videoId, 0);
 
                     }

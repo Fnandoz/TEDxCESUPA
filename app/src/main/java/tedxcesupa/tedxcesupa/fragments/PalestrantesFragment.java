@@ -203,19 +203,21 @@ public class PalestrantesFragment extends Fragment {
     }
 
 
-    public void getAvaliacao(String palestrante){
+    public void getAvaliacao(final String palestrante) {
         soma_avaliacao = 0;
         media_avaliacao = 0;
         DatabaseReference AvaliacaoRef = database.getReference("avaliacoes").child(palestrante);
         AvaliacaoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                avaliacoes_palestrante_map = (HashMap<String, Float>) dataSnapshot.getValue();
-                for(Object i: avaliacoes_palestrante_map.values()){
-                    soma_avaliacao+=Float.parseFloat(i.toString());
+                if (dataSnapshot.hasChild(palestrante)) {
+                    avaliacoes_palestrante_map = (HashMap<String, Float>) dataSnapshot.getValue();
+                    for (Object i : avaliacoes_palestrante_map.values()) {
+                        soma_avaliacao += Float.parseFloat(i.toString());
+                    }
+                    media_avaliacao = soma_avaliacao / avaliacoes_palestrante_map.size();
+                    ratingPalestrante.setRating(media_avaliacao);
                 }
-                media_avaliacao = soma_avaliacao/avaliacoes_palestrante_map.size();
-                ratingPalestrante.setRating(media_avaliacao);
             }
 
             @Override

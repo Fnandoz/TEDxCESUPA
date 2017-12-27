@@ -10,10 +10,14 @@
 
 package tedxcesupa.tedxcesupa;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -29,6 +33,10 @@ public class SplashActivity extends AppCompatActivity {
                 mostrarLogin();
             }
         }, 2000);
+
+        if (!checaConexao()) {
+            Toast.makeText(this, "Para uma melhor experiência, conecte-se à internet.", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void mostrarLogin() {
@@ -36,5 +44,12 @@ public class SplashActivity extends AppCompatActivity {
                 LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public boolean checaConexao() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }
