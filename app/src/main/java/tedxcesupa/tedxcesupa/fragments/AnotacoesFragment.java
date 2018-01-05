@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. TEDxCESUPA
+ * Copyright (c) 2018. TEDxCESUPA
  * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
  * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
  * Desenvolvido por:
@@ -66,15 +66,18 @@ public class AnotacoesFragment extends Fragment {
         mUser = mAuth.getCurrentUser();
         mReference = mDatabase.getReference("usuarios").child(mUser.getUid()).child("anotacao");
 
-
         anotacao = view.findViewById(R.id.anotacaoEditText);
         progressBar = view.findViewById(R.id.AnotacaoprogressBar);
 
         mReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                anotacao.setText(dataSnapshot.getValue().toString());
-                textoOriginal = dataSnapshot.getValue().toString();
+                if (dataSnapshot.exists()) {
+                    anotacao.setText(dataSnapshot.getValue().toString());
+                    textoOriginal = dataSnapshot.getValue().toString();
+                } else {
+                    mReference.setValue("");
+                }
                 progressBar.setVisibility(View.GONE);
                 status_edicao = true;
             }
@@ -84,6 +87,7 @@ public class AnotacoesFragment extends Fragment {
 
             }
         });
+
         return view;
     }
 
@@ -97,5 +101,9 @@ public class AnotacoesFragment extends Fragment {
     public void updateAnotation(){
         if (status_edicao)
             mReference.setValue(anotacao.getText().toString());
+    }
+
+    public void createAnotationField() {
+
     }
 }

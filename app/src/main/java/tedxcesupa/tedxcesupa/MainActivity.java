@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. TEDxCESUPA
+ * Copyright (c) 2018. TEDxCESUPA
  * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
  * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
  * Desenvolvido por:
@@ -12,7 +12,6 @@ package tedxcesupa.tedxcesupa;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -25,6 +24,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -138,16 +138,9 @@ public class MainActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.comprar_ingresso_dialog, null);
         builder.setView(dialogView);
 
-        Button comprarButton = dialogView.findViewById(R.id.comprar_button);
-        comprarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String url = "https://tedxcesupaconsolidar.eventbrite.com.br";
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
-            }
-        });
+        WebView website = dialogView.findViewById(R.id.comprar_webview);
+        website.getSettings().setJavaScriptEnabled(true);
+        website.loadUrl("https://tedxcesupaconsolidar.eventbrite.com.br/?discount=aplicativoandroid");
 
         AlertDialog dialog = builder.create();
         dialog.show();

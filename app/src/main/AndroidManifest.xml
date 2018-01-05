@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2017. TEDxCESUPA
+  ~ Copyright (c) 2018. TEDxCESUPA
   ~ Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
   ~ dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
   ~ Desenvolvido por:
@@ -7,7 +7,6 @@
   ~   Matheus Henrique dos Santos - mhenrique.as@gmail.com
   ~
   -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tedxcesupa.tedxcesupa">
 
@@ -28,9 +27,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

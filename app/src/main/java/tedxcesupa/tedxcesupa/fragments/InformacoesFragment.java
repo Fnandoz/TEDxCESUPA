@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. TEDxCESUPA
+ * Copyright (c) 2018. TEDxCESUPA
  * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
  * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
  * Desenvolvido por:
@@ -24,6 +24,8 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -48,7 +50,8 @@ import tedxcesupa.tedxcesupa.model.Patrocinador;
 
 public class InformacoesFragment extends Fragment {
 
-    Button maps, email, facebook, site;
+    Button maps;
+    TextView email, facebook, site;
     List<Patrocinador> patrocinadorList;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("patrocinadores");
@@ -181,6 +184,10 @@ public class InformacoesFragment extends Fragment {
     public void abrirUrl(String url){
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browserIntent);
+    }
+
+    public void onClick(View v) {
+        Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
     }
 
 }

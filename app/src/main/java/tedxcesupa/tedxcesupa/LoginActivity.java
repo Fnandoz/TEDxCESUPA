@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. TEDxCESUPA
+ * Copyright (c) 2018. TEDxCESUPA
  * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
  * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
  * Desenvolvido por:
@@ -26,6 +26,7 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -126,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (mUser.isEmailVerified()){
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
+                                    loginProgress.setVisibility(View.GONE);
                                 }else {
                                     Toast.makeText(LoginActivity.this, "Verifique sua conta", Toast.LENGTH_SHORT).show();
                                     mUser.sendEmailVerification();
@@ -141,6 +143,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Dados inválidos", Toast.LENGTH_SHORT).show();
             loginProgress.setVisibility(View.GONE);
         }
+        loginProgress.setVisibility(View.GONE);
     }
 
     public void cadastro(String email, String senha){
@@ -163,12 +166,16 @@ public class LoginActivity extends AppCompatActivity {
                                                             Toast.LENGTH_LONG).show();
                                                 }else {
                                                     // Erro
+                                                    FirebaseAuth.getInstance().signOut();
                                                 }
                                             }
                                         });
 
                             }else {
-                                Toast.makeText(LoginActivity.this, "Erro ao criar conta.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this,
+                                        "O endereço de email já cadastrado. Acesse com o Facebook ou informe um email diferente",
+                                        Toast.LENGTH_SHORT).show();
+                                FirebaseAuth.getInstance().signOut();
                             }
                         }
                     });
@@ -194,8 +201,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void handleFacebookAccessToken(AccessToken token) {
-        Log.d("TAG", "handleFacebookAccessToken:" + token);
-
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -208,10 +213,12 @@ public class LoginActivity extends AppCompatActivity {
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            //Log.w(TAG, "signInW ithCredential:failure", task.getException());
+                            Toast.makeText(LoginActivity.this,
+                                    "Acesse sua conta através do email",
                                     Toast.LENGTH_SHORT).show();
+                            FirebaseAuth.getInstance().signOut();
+                            LoginManager.getInstance().logOut();
                         }
                     }
                 });
