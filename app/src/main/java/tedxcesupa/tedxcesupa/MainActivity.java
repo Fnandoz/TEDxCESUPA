@@ -12,6 +12,7 @@ package tedxcesupa.tedxcesupa;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -24,7 +25,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -136,12 +136,19 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View dialogView = inflater.inflate(R.layout.comprar_ingresso_dialog, null);
+
         builder.setView(dialogView);
 
-        WebView website = dialogView.findViewById(R.id.comprar_webview);
-        website.getSettings().setJavaScriptEnabled(true);
-        website.loadUrl("https://tedxcesupaconsolidar.eventbrite.com.br/?discount=aplicativoandroid");
-
+        Button comprarButton = dialogView.findViewById(R.id.comprar_button);
+        comprarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://tedxcesupaconsolidar.eventbrite.com.br?discount=aplicativoandroid";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
         AlertDialog dialog = builder.create();
         dialog.show();
 
