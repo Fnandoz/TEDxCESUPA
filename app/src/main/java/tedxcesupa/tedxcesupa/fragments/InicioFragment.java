@@ -47,7 +47,8 @@ public class InicioFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
 
         YouTubePlayerView player1 = view.findViewById(R.id.youtube_player_view1);
-        YouTubePlayerView player2 = view.findViewById(R.id.youtube_player_view2);
+        //YouTubePlayerView player2 = view.findViewById(R.id.youtube_player_view2);
+        YouTubePlayerView player3 = view.findViewById(R.id.youtube_player_view3);
 
         player1.initialize(new YouTubePlayerInitListener() {
             @Override
@@ -63,7 +64,7 @@ public class InicioFragment extends Fragment {
             }
         }, true);
 
-        player2.initialize(new YouTubePlayerInitListener() {
+        player3.initialize(new YouTubePlayerInitListener() {
             @Override
             public void onInitSuccess(final YouTubePlayer initializedYouTubePlayer) {
                 initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {

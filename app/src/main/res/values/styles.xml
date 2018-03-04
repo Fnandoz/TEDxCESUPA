@@ -14,6 +14,8 @@
         <item name="colorAccent">@color/vermelho_tedx</item>
         <item name="colorPrimary">@color/preto</item>
         <item name="android:textColorPrimary">@color/preto</item>
+        <item name="android:textColorSecondary">@color/vermelho_tedx</item>
+
     </style>
 
     <style name="TEDxCESUPA_login" parent="Theme.AppCompat.Light.DarkActionBar">

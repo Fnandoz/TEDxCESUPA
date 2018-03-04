@@ -32,20 +32,42 @@
             </com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView>
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:text="TED é uma organização sem fins lucrativos devotada a ideias que merecem ser compartilhadas. Começando como uma conferência de quatro dias na Califórnia trinta anos atrás, TED tem crescido para realizar sua missão com múltiplas iniciativas."
+                android:text="@string/texto_ted"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/texto_tedx"
                 android:textSize="14sp" />
 
             <com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView
-                android:id="@+id/youtube_player_view2"
+                android:id="@+id/youtube_player_view3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/texto_tedxcesupa"
+                android:textSize="14sp" />
 
         </LinearLayout>
 

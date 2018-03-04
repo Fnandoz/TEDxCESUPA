@@ -12,6 +12,7 @@ package tedxcesupa.tedxcesupa.fragments;
 
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,7 @@ public class AnotacoesFragment extends Fragment {
 
     EditText anotacao;
     ProgressBar progressBar;
+    FloatingActionButton saveFab;
 
     FirebaseDatabase mDatabase;
     DatabaseReference mReference;
@@ -68,6 +70,14 @@ public class AnotacoesFragment extends Fragment {
 
         anotacao = view.findViewById(R.id.anotacaoEditText);
         progressBar = view.findViewById(R.id.AnotacaoprogressBar);
+        saveFab = view.findViewById(R.id.saveAnotacaoFab);
+
+        saveFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateAnotation();
+            }
+        });
 
         mReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -101,9 +111,5 @@ public class AnotacoesFragment extends Fragment {
     public void updateAnotation(){
         if (status_edicao)
             mReference.setValue(anotacao.getText().toString());
-    }
-
-    public void createAnotationField() {
-
     }
 }
