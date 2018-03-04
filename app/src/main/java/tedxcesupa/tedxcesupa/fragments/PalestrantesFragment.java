@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. TEDxCESUPA
+ * Copyright (c) 2018. TEDxCESUPA
  * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
  * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
  * Desenvolvido por:
@@ -109,6 +109,7 @@ public class PalestrantesFragment extends Fragment {
                 dialogoPalestrante(palestranteArrayList.get(i));
             }
         });
+
         return view;
     }
 

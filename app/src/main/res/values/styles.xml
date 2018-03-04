@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2017. TEDxCESUPA
+  ~ Copyright (c) 2018. TEDxCESUPA
   ~ Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
   ~ dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
   ~ Desenvolvido por:
@@ -15,4 +15,12 @@
         <item name="colorPrimary">@color/preto</item>
         <item name="android:textColorPrimary">@color/preto</item>
     </style>
+
+    <style name="TEDxCESUPA_login" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorAccent">@color/vermelho_tedx</item>
+        <item name="colorPrimary">@color/preto</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:windowBackground">@drawable/fundo_cesupa</item>
+    </style>
+
 </resources>

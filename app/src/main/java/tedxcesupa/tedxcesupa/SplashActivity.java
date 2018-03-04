@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017. TEDxCESUPA
+ * Copyright (c) 2018. TEDxCESUPA
  * Grupo de Estudos em Tecnologia Assistiva - Centro Universitário do Estado do Pará
  * dgp.cnpq.br/dgp/espelhogrupo/6411407947674167
  * Desenvolvido por:
@@ -41,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void mostrarLogin() {
         Intent intent = new Intent(SplashActivity.this,
-                LoginActivity.class);
+                Login2Activity.class);
         startActivity(intent);
         finish();
     }

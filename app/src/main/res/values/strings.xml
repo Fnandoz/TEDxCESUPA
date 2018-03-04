@@ -12,7 +12,7 @@
 
     <string name="app_name">TEDxCESUPA Consolidar</string>
 
-    <string name="facebook_app_id">1645809122125292</string>
+    <string name="facebook_application_id" translatable="false">1645809122125292</string>
     <string name="fb_login_protocol_scheme">fb1645809122125292</string>
 
 </resources>
