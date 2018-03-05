@@ -13,7 +13,6 @@ package tedxcesupa.tedxcesupa;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -35,7 +34,34 @@ public class Login2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login2);
 
         mAuth = FirebaseAuth.getInstance();
+        makeLogin();
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+
+            if (resultCode == RESULT_OK) {
+                usuarioLogado();
+            } else {
+                // Sign in failed, check response for error code
+                makeLogin();
+            }
+        }
+    }
+
+    public void usuarioLogado() {
+        Intent intent = new Intent(Login2Activity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    public void makeLogin() {
         if (mAuth.getCurrentUser() != null) {
             usuarioLogado();
         } else {
@@ -53,28 +79,5 @@ public class Login2Activity extends AppCompatActivity {
                             .build(),
                     RC_SIGN_IN);
         }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_SIGN_IN) {
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-
-            if (resultCode == RESULT_OK) {
-                usuarioLogado();
-            } else {
-                // Sign in failed, check response for error code
-                Toast.makeText(this, "Erro! Tente novamente", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    public void usuarioLogado() {
-        Intent intent = new Intent(Login2Activity.this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 }
