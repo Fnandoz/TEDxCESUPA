@@ -37,7 +37,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
 import tedxcesupa.tedxcesupa.fragments.AnotacoesFragment;
 import tedxcesupa.tedxcesupa.fragments.InformacoesFragment;
@@ -100,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         loginManager = LoginManager.getInstance();
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         bottomNavigationView = findViewById(R.id.bottom_menu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
