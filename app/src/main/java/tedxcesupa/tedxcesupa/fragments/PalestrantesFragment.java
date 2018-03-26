@@ -218,7 +218,7 @@ public class PalestrantesFragment extends Fragment {
                         soma_avaliacao += Float.parseFloat(i.toString());
                     }
                     media_avaliacao = soma_avaliacao / avaliacoes_palestrante_map.size();
-                    ratingPalestrante.setRating(media_avaliacao);
+                    //ratingPalestrante.setRating(media_avaliacao);
                 }
             }
 
